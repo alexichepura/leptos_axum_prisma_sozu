@@ -1,0 +1,87 @@
+[package]
+name = "leptos_axum_prisma_sozu"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+[workspace]
+resolver = "2"
+members = ["prisma-cli", "prisma_client"]
+[workspace.dependencies]
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.8", default-features = false, features = [
+    "sqlite",
+    "sqlite-create-many",
+] }
+prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.8", default-features = false, features = [
+    "sqlite",
+    "sqlite-create-many",
+] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1.28" }
+[dependencies]
+axum = { version = "0.6.18", optional = true }
+console_error_panic_hook = "0.1"
+console_log = "1"
+cfg-if = "1"
+# leptos = { version = "0.3", default-features = false, features = ["serde"] }
+# leptos_axum = { version = "0.3" }
+# leptos_meta = { version = "0.3", default-features = false }
+# leptos_router = { version = "0.3", default-features = false }
+leptos = { git = "https://github.com/leptos-rs/leptos", version = "0.3", default-features = false, features = [
+    "serde",
+] }
+leptos_axum = { git = "https://github.com/leptos-rs/leptos", version = "0.3", optional = true }
+leptos_meta = { git = "https://github.com/leptos-rs/leptos", version = "0.3", default-features = false }
+leptos_router = { git = "https://github.com/leptos-rs/leptos", version = "0.3", default-features = false }
+log = "0.4"
+serde = { workspace = true }
+simple_logger = "4"
+tokio = { workspace = true }
+tower = { version = "0.4.13", optional = true }
+tower-http = { version = "0.4", features = [
+    "fs",
+    "compression-full",
+], optional = true }
+wasm-bindgen = "0.2.84"
+thiserror = "1.0.38"
+tracing = { version = "0.1.37", optional = true }
+http = "0.2.8"
+prisma_client = { path = "./prisma_client", optional = true }
+
+[features]
+hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
+ssr = [
+    "dep:prisma_client",
+    "dep:axum",
+    "dep:tower",
+    "dep:tower-http",
+    "dep:leptos_axum",
+    "leptos/ssr",
+    "leptos_meta/ssr",
+    "leptos_router/ssr",
+    "dep:tracing",
+]
+
+[package.metadata.cargo-all-features]
+denylist = ["axum", "tokio", "tower", "tower-http", "leptos_axum"]
+skip_feature_sets = [["ssr", "hydrate"]]
+
+[package.metadata.leptos]
+output-name = "leptos_axum_prisma_sozu"
+site-root = "target/site"
+site-pkg-dir = "pkg"
+style-file = "style/main.scss"
+assets-dir = "public"
+site-addr = "127.0.0.1:3000"
+reload-port = 3001
+end2end-cmd = "npx playwright test"
+end2end-dir = "end2end"
+browserquery = "defaults"
+watch = false
+env = "DEV"
+bin-features = ["ssr"]
+bin-default-features = false
+lib-features = ["hydrate"]
+lib-default-features = false
