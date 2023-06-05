@@ -1,11 +1,14 @@
 # Leptos Axum Prisma Sozu (LAPS)
 
-Boilerplate based on oficial leptos axum example https://github.com/leptos-rs/start-axum
+100% rust fullstack starter \
+Demo <https://leptos-axum-prisma-sozu.chepura.space>
 
-https://github.com/leptos-rs/leptos
-https://github.com/tokio-rs/axum
-https://github.com/Brendonovich/prisma-client-rust
-https://github.com/sozu-proxy/sozu
+- <https://github.com/leptos-rs/leptos>
+- <https://github.com/tokio-rs/axum>
+- <https://github.com/Brendonovich/prisma-client-rust>
+- <https://github.com/sozu-proxy/sozu>
+
+Initially based on official leptos starter <https://github.com/leptos-rs/start-axum>
 
 ## Prerequisites
 ```sh
