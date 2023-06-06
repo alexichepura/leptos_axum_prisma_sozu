@@ -1,12 +1,16 @@
-# Leptos Axum Prisma Sozu (LAPS)
+# Leptos Axum Prisma Sōzu (LAPS)
 
 100% rust fullstack starter \
 Demo <https://leptos-axum-prisma-sozu.chepura.space>
 
-- <https://github.com/leptos-rs/leptos>
-- <https://github.com/tokio-rs/axum>
-- <https://github.com/Brendonovich/prisma-client-rust>
-- <https://github.com/sozu-proxy/sozu>
+## Features
+- SSR+SPA with Leptos <https://github.com/leptos-rs/leptos>
+- API with Axum <https://github.com/tokio-rs/axum>
+- DB integration with Prisma <https://github.com/Brendonovich/prisma-client-rust>
+- proxy Sōzu <https://github.com/sozu-proxy/sozu>
+- letsencrypt cert gen in manual mode and proxy config
+- cross compilation to server architecture, ARM64 used
+- precompression of frontend files
 
 Initially based on official leptos starter <https://github.com/leptos-rs/start-axum>
 
@@ -30,7 +34,7 @@ brew install aarch64-unknown-linux-gnu # install aarch64-unknown-linux-gnu toolc
 export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-unknown-linux-gnu-gcc
 export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-unknown-linux-gnu-gcc
 
-brew install protobuf # sozu requires protobuf installed
+brew install protobuf # sōzu requires protobuf installed
 ```
 ### Common
 ```sh
@@ -40,7 +44,7 @@ cp .env.example .env # copy and edit .env
 ```
 
 ## Prod build, deploy and run
-### Sozu proxy
+### Sōzu
 <https://github.com/sozu-proxy/sozu/blob/main/doc/recipes.md>
 ```sh 
 ./ops/sozu-install.sh
@@ -48,7 +52,7 @@ cp .env.example .env # copy and edit .env
 ./ops/sozu-user.sh
 ```
 
-### Certificate
+### Cert
 <https://eff-certbot.readthedocs.io/en/stable/using.html#manual>
 ```sh
 ./ops/cert-bot.sh # Letsencrypt certbot manual certificates generation into ./ops/cert
