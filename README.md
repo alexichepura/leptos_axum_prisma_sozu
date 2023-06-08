@@ -18,6 +18,7 @@ Initially based on official leptos starter <https://github.com/leptos-rs/start-a
 <https://leptos-rs.github.io/leptos/02_getting_started.html>
 ```sh
 cargo install cargo-leptos
+cargo prisma db push
 cargo leptos watch
 ```
 
